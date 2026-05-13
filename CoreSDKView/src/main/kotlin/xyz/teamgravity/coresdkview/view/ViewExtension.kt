@@ -1,0 +1,93 @@
+package xyz.teamgravity.coresdkview.view
+
+import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import com.google.android.material.textfield.TextInputLayout
+import xyz.teamgravity.coresdkview.R
+
+/**
+ * Makes view visible.
+ */
+fun View.visible() {
+    visibility = View.VISIBLE
+}
+
+/**
+ * Makes view invisible.
+ */
+fun View.invisible() {
+    visibility = View.INVISIBLE
+}
+
+/**
+ * Makes view gone.
+ */
+fun View.gone() {
+    visibility = View.GONE
+}
+
+/**
+ * Makes view fade in.
+ */
+fun View.fadeIn() {
+    val animation = AnimationUtils.loadAnimation(context, R.anim.fade_in)
+    this.animation = animation
+    visible()
+}
+
+/**
+ * Makes view fade out.
+ */
+fun View.fadeOut() {
+    val animation = AnimationUtils.loadAnimation(context, R.anim.fade_out)
+    animation.setAnimationListener(
+        object : Animation.AnimationListener {
+            override fun onAnimationStart(animation: Animation?) = Unit
+
+            override fun onAnimationEnd(animation: Animation?) = gone()
+
+            override fun onAnimationRepeat(animation: Animation?) = Unit
+        }
+    )
+    startAnimation(animation)
+}
+
+/**
+ * Makes view slide up.
+ */
+fun View.slideUp() {
+    val animation = AnimationUtils.loadAnimation(context, R.anim.slide_up)
+    this.animation = animation
+    visible()
+}
+
+/**
+ * Clears error and focus of TextInputLayout.
+ */
+fun TextInputLayout.clearErrorFocus() {
+    error = null
+    clearFocus()
+}
+
+/**
+ * Gets trimmed text of TextInputLayout.
+ */
+fun TextInputLayout.text(): String {
+    return editText?.text.toString().trim()
+}
+
+/**
+ * Sets text of TextInputLayout.
+ */
+fun TextInputLayout.setText(text: String?) {
+    editText?.setText(text)
+}
+
+/**
+ * Sets error and requests focus to TextInputLayout.
+ */
+fun TextInputLayout.error(error: String) {
+    this.error = error
+    requestFocus()
+}

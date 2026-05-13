@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ProgressHorizontalView">
+        <attr name="phvIsIndeterminate" format="boolean" />
+        <attr name="phvMax" format="integer" />
+        <attr name="phvProgressBackgroundColor" format="color" />
+        <attr name="phvProgressColor" format="color" />
+    </declare-styleable>
+</resources>

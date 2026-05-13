@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "xyz.teamgravity.coresdkview"
+    namespace = "xyz.teamgravity.coresdkdemoapp"
 
     compileSdk {
         version = release(libs.versions.sdk.compile.get().toInt()) {
@@ -19,6 +19,10 @@ android {
         versionName = "1.0"
     }
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
@@ -26,6 +30,9 @@ android {
 }
 
 dependencies {
+    // gravity core
+    implementation(projects.coreSDKView)
+
     // core
     implementation(libs.core)
 

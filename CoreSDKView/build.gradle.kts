@@ -40,6 +40,18 @@ android {
 dependencies {
     // core
     implementation(libs.core)
+
+    // material
+    implementation(libs.material)
+
+    // fragment
+    implementation(libs.fragment)
+
+    // navigation
+    implementation(libs.navigation.fragment)
+
+    // konfetti
+    implementation(libs.konfetti)
 }
 
 publishing {
