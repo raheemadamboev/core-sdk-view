@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.library)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
     id("maven-publish")
 }
 
