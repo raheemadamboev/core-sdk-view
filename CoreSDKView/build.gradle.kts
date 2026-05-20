@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.library)
+    alias(libs.plugins.ksp)
     id("maven-publish")
 }
 
@@ -47,11 +48,29 @@ dependencies {
     // fragment
     implementation(libs.fragment)
 
+    // coroutines
+    implementation(libs.coroutines)
+    implementation(libs.coroutines.android)
+
+    // lifecycle
+    implementation(libs.lifecycle)
+    implementation(libs.lifecycle.viewmodel)
+
+    // hilt
+    implementation(libs.hilt)
+    ksp(libs.dagger.compiler)
+
     // navigation
     implementation(libs.navigation.fragment)
 
     // konfetti
     implementation(libs.konfetti)
+
+    // timber
+    implementation(libs.timber)
+
+    // gravity
+    implementation(libs.gravity.core)
 }
 
 publishing {
@@ -59,7 +78,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "com.github.raheemadamboev"
             artifactId = "core-sdk-view"
-            version = "1.0.0"
+            version = "1.0.1"
 
             afterEvaluate {
                 from(components["release"])
