@@ -6,4 +6,7 @@
         <attr name="phvProgressBackgroundColor" format="color" />
         <attr name="phvProgressColor" format="color" />
     </declare-styleable>
+
+    <!-- text color of Dialog button -->
+    <attr name="colorDialogButtonText" format="reference" />
 </resources>
