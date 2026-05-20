@@ -41,3 +41,4 @@ gravity-core = { group = "com.github.raheemadamboev", name = "core-sdk-android",
 android = { id = "com.android.application", version.ref = "android" }
 library = { id = "com.android.library", version.ref = "android" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
