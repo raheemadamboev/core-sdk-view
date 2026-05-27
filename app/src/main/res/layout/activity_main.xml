@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <xyz.teamgravity.coresdkview.progress.ProgressHorizontalView
+    <xyz.teamgravity.coresdkview.component.ProgressHorizontalView
         android:id="@+id/progress"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
