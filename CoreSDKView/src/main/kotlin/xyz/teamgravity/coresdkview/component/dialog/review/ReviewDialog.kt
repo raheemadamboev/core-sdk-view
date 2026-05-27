@@ -1,4 +1,4 @@
-package xyz.teamgravity.coresdkview.review
+package xyz.teamgravity.coresdkview.component.dialog.review
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -49,6 +49,11 @@ class ReviewDialog : DialogFragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun ui() {
         content()
     }
@@ -90,10 +95,5 @@ class ReviewDialog : DialogFragment() {
             if (isAdded) dismissAllowingStateLoss()
             viewmodel.onReview(activity)
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

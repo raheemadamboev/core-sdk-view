@@ -64,6 +64,9 @@ dependencies {
     // navigation
     implementation(libs.navigation.fragment)
 
+    // progressbar
+    implementation(libs.progressbar.circular)
+
     // konfetti
     implementation(libs.konfetti)
 
@@ -79,7 +82,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "com.github.raheemadamboev"
             artifactId = "core-sdk-view"
-            version = "1.0.3"
+            version = "1.0.4"
 
             afterEvaluate {
                 from(components["release"])

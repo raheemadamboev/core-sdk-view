@@ -1,4 +1,4 @@
-package xyz.teamgravity.coresdkview.review
+package xyz.teamgravity.coresdkview.component.dialog.review
 
 import android.app.Activity
 import androidx.lifecycle.ViewModel

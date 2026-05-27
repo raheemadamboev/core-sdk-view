@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- konfetti -->
+    <!-- General -->
+    <color name="background_ripple">#1AD2D4E3</color>
+    <color name="background_loading">#B0000000</color>
+
+    <!-- Konfetti -->
     <color name="lt_yellow">#fce18a</color>
     <color name="lt_orange">#ff726d</color>
     <color name="lt_purple">#b48def</color>

@@ -1,4 +1,4 @@
-package xyz.teamgravity.coresdkview.update.downloaded
+package xyz.teamgravity.coresdkview.component.dialog.update.downloaded
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -47,6 +47,11 @@ class UpdateDownloadedDialog : DialogFragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun ui() {
         content()
     }
@@ -80,11 +85,6 @@ class UpdateDownloadedDialog : DialogFragment() {
             if (isAdded) dismissAllowingStateLoss()
             onConfirmClick?.invoke()
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     ///////////////////////////////////////////////////////////////////////////
