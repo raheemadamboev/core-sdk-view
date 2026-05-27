@@ -1,4 +1,4 @@
-package xyz.teamgravity.coresdkview.update.available
+package xyz.teamgravity.coresdkview.component.dialog.update.available
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel

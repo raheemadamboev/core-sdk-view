@@ -1,10 +1,9 @@
-package xyz.teamgravity.coresdkview.update.available
+package xyz.teamgravity.coresdkview.component.dialog.update.available
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
@@ -64,6 +63,11 @@ class UpdateAvailableDialog : DialogFragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun ui() {
         content()
     }
@@ -114,11 +118,6 @@ class UpdateAvailableDialog : DialogFragment() {
             if (!viewmodel.forced.value && isAdded) dismissAllowingStateLoss()
             onConfirmClick?.invoke()
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     ///////////////////////////////////////////////////////////////////////////

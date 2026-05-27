@@ -8,6 +8,7 @@ coroutines = "1.11.0"
 lifecycle = "2.10.0"
 hilt = "2.59.2"
 navigation = "2.9.8"
+progressbar-circular = "3.1.0"
 konfetti = "2.0.5"
 timber = "5.0.1"
 gravity-core = "1.0.46"
@@ -32,6 +33,7 @@ lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmode
 hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 dagger-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
 navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation" }
+progressbar-circular = { group = "com.mikhaellopez", name = "circularprogressbar", version.ref = "progressbar-circular" }
 konfetti = { group = "nl.dionsegijn", name = "konfetti-xml", version.ref = "konfetti" }
 timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
 gravity-core = { group = "com.github.raheemadamboev", name = "core-sdk-android", version.ref = "gravity-core" }

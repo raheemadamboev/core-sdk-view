@@ -1,4 +1,4 @@
-package xyz.teamgravity.coresdkview.progress
+package xyz.teamgravity.coresdkview.component
 
 import android.content.Context
 import android.graphics.Color

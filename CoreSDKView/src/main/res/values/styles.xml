@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SimpleIndeterminateProgressBar">
+        <item name="cpb_background_progressbar_color">?attr/colorBackgroundProgress</item>
+        <item name="cpb_background_progressbar_width">1.4dp</item>
+        <item name="cpb_indeterminate_mode">true</item>
+        <item name="cpb_progress_direction">to_right</item>
+        <item name="cpb_progressbar_color">?attr/colorProgress</item>
+        <item name="cpb_progressbar_width">2.4dp</item>
+        <item name="cpb_round_border">true</item>
+    </style>
+</resources>
