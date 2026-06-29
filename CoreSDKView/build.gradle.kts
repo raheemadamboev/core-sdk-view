@@ -82,7 +82,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "com.github.raheemadamboev"
             artifactId = "core-sdk-view"
-            version = "1.0.11"
+            version = "1.0.12"
 
             afterEvaluate {
                 from(components["release"])
