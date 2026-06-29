@@ -112,9 +112,6 @@ fun <T> ListAdapter<T, *>.submitListWithAnimation(
                 recyclerview.layoutAnimation = AnimationUtils.loadLayoutAnimation(recyclerview.context, animation)
                 recyclerview.scheduleLayoutAnimation()
                 onAnimated()
-                recyclerview.post {
-                    recyclerview.layoutAnimation = null
-                }
             }
         }
     }
