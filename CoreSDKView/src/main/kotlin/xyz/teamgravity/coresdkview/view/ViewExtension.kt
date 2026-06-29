@@ -3,6 +3,9 @@ package xyz.teamgravity.coresdkview.view
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import androidx.core.view.doOnPreDraw
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputLayout
 import xyz.teamgravity.coresdkview.R
 
@@ -90,4 +93,23 @@ fun TextInputLayout.setText(text: String?) {
 fun TextInputLayout.error(error: String) {
     this.error = error
     requestFocus()
+}
+
+/**
+ * Submits data to adapter and animates RecyclerView if first time.
+ */
+fun <T> ListAdapter<T, *>.submitListWithAnimation(
+    data: List<T>,
+    recyclerview: RecyclerView,
+    animated: Boolean,
+    onAnimated: () -> Unit
+) {
+    submitList(data) {
+        if (!animated && data.isNotEmpty()) {
+            recyclerview.doOnPreDraw {
+                recyclerview.scheduleLayoutAnimation()
+                onAnimated()
+            }
+        }
+    }
 }
