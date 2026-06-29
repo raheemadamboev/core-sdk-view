@@ -3,6 +3,7 @@ package xyz.teamgravity.coresdkview.view
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import androidx.annotation.AnimRes
 import androidx.core.view.doOnPreDraw
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -101,14 +102,19 @@ fun TextInputLayout.error(error: String) {
 fun <T> ListAdapter<T, *>.submitListWithAnimation(
     data: List<T>,
     recyclerview: RecyclerView,
+    @AnimRes animation: Int,
     animated: Boolean,
     onAnimated: () -> Unit
 ) {
     submitList(data) {
         if (!animated && data.isNotEmpty()) {
             recyclerview.doOnPreDraw {
+                recyclerview.layoutAnimation = AnimationUtils.loadLayoutAnimation(recyclerview.context, animation)
                 recyclerview.scheduleLayoutAnimation()
                 onAnimated()
+                recyclerview.post {
+                    recyclerview.layoutAnimation = null
+                }
             }
         }
     }
