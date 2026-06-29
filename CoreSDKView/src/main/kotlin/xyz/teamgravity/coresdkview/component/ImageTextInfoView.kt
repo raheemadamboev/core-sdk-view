@@ -10,9 +10,8 @@ import android.widget.LinearLayout
 import androidx.annotation.DrawableRes
 import androidx.annotation.FloatRange
 import androidx.annotation.StringRes
-import androidx.core.view.doOnLayout
-import androidx.core.view.updatePadding
-import xyz.teamgravity.coresdkandroid.android.SizeUtil
+import androidx.core.view.updateLayoutParams
+import androidx.core.view.updateMarginsRelative
 import xyz.teamgravity.coresdkview.databinding.ViewImageTextInfoBinding
 
 class ImageTextInfoView : LinearLayout {
@@ -43,12 +42,6 @@ class ImageTextInfoView : LinearLayout {
     private fun configuration() {
         orientation = VERTICAL
         gravity = Gravity.CENTER
-
-        val horizontalPadding = SizeUtil.dpToPx(16)
-        updatePadding(
-            left = horizontalPadding,
-            right = horizontalPadding
-        )
     }
 
     private fun inflate() {
@@ -60,13 +53,14 @@ class ImageTextInfoView : LinearLayout {
     ///////////////////////////////////////////////////////////////////////////
 
     fun setMarginHorizontalPercent(@FloatRange(from = 0.0, to = 1.0) percent: Float) {
-        doOnLayout {
-            val parent = it.parent as View
-            val margin = (parent.width * percent).toInt()
-            val params = it.layoutParams as MarginLayoutParams
-            params.marginStart = margin
-            params.marginEnd = margin
-            it.requestLayout()
+        post {
+            val margin = (((parent as View).width * percent) / 2).toInt()
+            updateLayoutParams<MarginLayoutParams> {
+                updateMarginsRelative(
+                    start = margin,
+                    end = margin
+                )
+            }
         }
     }
 

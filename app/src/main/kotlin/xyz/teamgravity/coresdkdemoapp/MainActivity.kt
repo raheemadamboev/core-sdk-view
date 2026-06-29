@@ -19,8 +19,10 @@ class MainActivity : AppCompatActivity() {
         EdgeToEdgeUtil.setup(binding.root)
 
         binding.apply {
-            progress.setProgress(70, true)
-            progress.setProgressBackgroundColor(ContextCompat.getColor(this@MainActivity, R.color.black))
+            imageTextInfoView.setMarginHorizontalPercent(0.1F)
+            imageTextInfoView.setTextSize(18F)
+            imageTextInfoView.setImage(xyz.teamgravity.coresdkview.R.drawable.ic_favorite)
+            imageTextInfoView.setText(R.string.app_name)
         }
     }
 }
