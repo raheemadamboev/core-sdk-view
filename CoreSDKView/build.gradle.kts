@@ -10,7 +10,7 @@ android {
 
     compileSdk {
         version = release(libs.versions.sdk.compile.get().toInt()) {
-            minorApiLevel = 1
+            minorApiLevel = 0
         }
     }
 
@@ -82,7 +82,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "com.github.raheemadamboev"
             artifactId = "core-sdk-view"
-            version = "1.0.7"
+            version = "1.0.8"
 
             afterEvaluate {
                 from(components["release"])

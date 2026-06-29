@@ -9,11 +9,11 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.core.view.updatePadding
 import xyz.teamgravity.coresdkandroid.android.SizeUtil
-import xyz.teamgravity.coresdkview.databinding.ViewImageTextInfoBinding
+import xyz.teamgravity.coresdkview.databinding.ViewIconTextInfoBinding
 
-class ImageTextInfoView : LinearLayout {
+class IconTextInfoView : LinearLayout {
 
-    private lateinit var binding: ViewImageTextInfoBinding
+    private lateinit var binding: ViewIconTextInfoBinding
 
     constructor(context: Context) : super(context) {
         initialize()
@@ -48,15 +48,15 @@ class ImageTextInfoView : LinearLayout {
     }
 
     private fun inflate() {
-        binding = ViewImageTextInfoBinding.inflate(LayoutInflater.from(context), this)
+        binding = ViewIconTextInfoBinding.inflate(LayoutInflater.from(context), this)
     }
 
     ///////////////////////////////////////////////////////////////////////////
     // API
     ///////////////////////////////////////////////////////////////////////////
 
-    fun setImage(@DrawableRes icon: Int) {
-        binding.imageI.setImageResource(icon)
+    fun setIcon(@DrawableRes icon: Int) {
+        binding.iconI.setImageResource(icon)
     }
 
     fun setText(@StringRes text: Int) {
