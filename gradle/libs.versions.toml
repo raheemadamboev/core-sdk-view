@@ -1,12 +1,12 @@
 [versions]
 
-core = "1.18.0"
+core = "1.19.0"
 appcompat = "1.7.1"
 material = "1.14.0"
 fragment = "1.8.9"
 coroutines = "1.11.0"
-lifecycle = "2.10.0"
-hilt = "2.59.2"
+lifecycle = "2.11.0"
+hilt = "2.60"
 navigation = "2.9.8"
 progressbar-circular = "3.1.0"
 konfetti = "2.0.5"
@@ -14,11 +14,11 @@ timber = "5.0.1"
 gravity-core = "1.0.46"
 
 android = "9.2.1"
-ksp = "2.3.7"
+ksp = "2.3.9"
 
 sdk-min = "26"
-sdk-compile = "36"
-sdk-target = "36"
+sdk-compile = "37"
+sdk-target = "37"
 
 [libraries]
 

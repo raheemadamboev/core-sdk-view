@@ -7,7 +7,7 @@ android {
 
     compileSdk {
         version = release(libs.versions.sdk.compile.get().toInt()) {
-            minorApiLevel = 1
+            minorApiLevel = 0
         }
     }
 
