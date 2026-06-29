@@ -6,16 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <xyz.teamgravity.coresdkview.component.ProgressHorizontalView
-        android:id="@+id/progress"
-        style="?android:attr/progressBarStyleHorizontal"
+    <xyz.teamgravity.coresdkview.component.ImageTextInfoView
+        android:id="@+id/image_text_info_view"
         android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:phvIsIndeterminate="false"
-        app:phvMax="100"
-        app:phvProgressBackgroundColor="?attr/colorPrimary"
-        app:phvProgressColor="@color/dk_green" />
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
