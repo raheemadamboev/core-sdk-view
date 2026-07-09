@@ -1,7 +1,6 @@
 package xyz.teamgravity.coresdkview.component.dialog
 
 import android.content.DialogInterface
-import android.content.res.Resources
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +13,7 @@ import timber.log.Timber
 import xyz.teamgravity.coresdkview.databinding.DialogTwoButtonBinding
 import xyz.teamgravity.coresdkview.fragment.setBackground
 import xyz.teamgravity.coresdkview.fragment.setDialogWidth
+import xyz.teamgravity.coresdkview.resources.ResourcesConst.ID_NULL
 import xyz.teamgravity.coresdkview.view.gone
 import xyz.teamgravity.coresdkview.view.visible
 
@@ -25,7 +25,8 @@ class GenericDialog : DialogFragment() {
             title: String? = null,
             message: String? = null,
             positiveButton: String?,
-            negativeButton: String?
+            negativeButton: String?,
+            dismissOnButtonClick: Boolean = true
         ): GenericDialog {
             val dialog = GenericDialog()
             val bundle = Bundle()
@@ -34,6 +35,7 @@ class GenericDialog : DialogFragment() {
             if (message != null) bundle.putString(EXTRA_MESSAGE, message)
             if (positiveButton != null) bundle.putString(EXTRA_POSITIVE_BUTTON, positiveButton)
             if (negativeButton != null) bundle.putString(EXTRA_NEGATIVE_BUTTON, negativeButton)
+            bundle.putBoolean(EXTRA_DISMISS_ON_BUTTON_CLICK, dismissOnButtonClick)
             dialog.arguments = bundle
             return dialog
         }
@@ -43,6 +45,7 @@ class GenericDialog : DialogFragment() {
         const val EXTRA_MESSAGE = "GenericDialog.extra.message"
         const val EXTRA_POSITIVE_BUTTON = "GenericDialog.extra.positiveButton"
         const val EXTRA_NEGATIVE_BUTTON = "GenericDialog.extra.negativeButton"
+        const val EXTRA_DISMISS_ON_BUTTON_CLICK = "GenericDialog.extra.dismissOnButtonClick"
     }
 
     private var _binding: DialogTwoButtonBinding? = null
@@ -51,6 +54,14 @@ class GenericDialog : DialogFragment() {
     private var onPositiveClick: (() -> Unit)? = null
     private var onNegativeClick: (() -> Unit)? = null
     private var onDismissListener: (() -> Unit)? = null
+
+    @DrawableRes
+    private var extraIcon: Int = ID_NULL
+    private var extraTitle: String? = null
+    private var extraMessage: String? = null
+    private var extraPositiveButton: String? = null
+    private var extraNegativeButton: String? = null
+    private var extraDismissOnButtonClick: Boolean = true
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = DialogTwoButtonBinding.inflate(inflater, container, false)
@@ -84,6 +95,7 @@ class GenericDialog : DialogFragment() {
     }
 
     private fun ui() {
+        args()
         content()
     }
 
@@ -92,47 +104,52 @@ class GenericDialog : DialogFragment() {
         onNegative()
     }
 
+    private fun args() {
+        val args = requireArguments()
+        extraIcon = args.getInt(EXTRA_ICON, ID_NULL)
+        extraTitle = args.getString(EXTRA_TITLE)
+        extraMessage = args.getString(EXTRA_MESSAGE)
+        extraPositiveButton = args.getString(EXTRA_POSITIVE_BUTTON)
+        extraNegativeButton = args.getString(EXTRA_NEGATIVE_BUTTON)
+        extraDismissOnButtonClick = args.getBoolean(EXTRA_DISMISS_ON_BUTTON_CLICK)
+    }
+
     private fun content() {
         binding.apply {
             setDialogWidth()
 
-            val args = requireArguments()
-
-            val icon = args.getInt(EXTRA_ICON, Resources.ID_NULL)
-            if (icon == Resources.ID_NULL) {
+            if (extraIcon == ID_NULL) {
                 iconI.gone()
             } else {
-                iconI.setImageResource(icon)
+                iconI.setImageResource(extraIcon)
                 iconI.visible()
             }
 
-            val title = args.getString(EXTRA_TITLE)
-            titleT.text = title
-            titleT.isVisible = title != null
+            titleT.text = extraTitle
+            titleT.isVisible = extraTitle != null
 
-            val message = args.getString(EXTRA_MESSAGE)
-            messageT.text = message
-            messageT.isVisible = message != null
+            messageT.text = extraMessage
+            messageT.isVisible = extraMessage != null
 
-            val positiveButton = args.getString(EXTRA_POSITIVE_BUTTON)
-            positiveB.text = positiveButton
-            positiveB.isVisible = positiveButton != null
+            positiveB.text = extraPositiveButton
+            positiveB.isVisible = extraPositiveButton != null
 
-            val negativeButton = args.getString(EXTRA_NEGATIVE_BUTTON)
-            negativeB.text = negativeButton
-            negativeB.isVisible = negativeButton != null
+            negativeB.text = extraNegativeButton
+            negativeB.isVisible = extraNegativeButton != null
         }
     }
 
     private fun onPositive() {
         binding.positiveB.setOnClickListener {
             onPositiveClick?.invoke()
+            if (extraDismissOnButtonClick && isAdded) dismissAllowingStateLoss()
         }
     }
 
     private fun onNegative() {
         binding.negativeB.setOnClickListener {
             onNegativeClick?.invoke()
+            if (extraDismissOnButtonClick && isAdded) dismissAllowingStateLoss()
         }
     }
 
